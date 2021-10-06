@@ -13,6 +13,7 @@ const Main = () => {
         image: "",
         title: "",
         description: "",
+        price: ""
     });
 
     const [open, setOpen] = React.useState(false);
@@ -21,8 +22,8 @@ const Main = () => {
         setOpen(false);
     };
 
-    const onClickVoiture = (id, image, title, description ) => {
-        setVoiture({ id, image, title, description });
+    const onClickVoiture = (id, image, title, description, price ) => {
+        setVoiture({ id, image, title, description, price });
         setOpen(true);
     };
 
@@ -57,7 +58,7 @@ const Main = () => {
                                     title={voiture.title}
                                     description={voiture.description}
                                     onClick={() => {
-                                        onClickVoiture(voiture.id, voiture.image, voiture.title, voiture.description);
+                                        onClickVoiture(voiture.id, voiture.image, voiture.title, voiture.description, voiture.price);
                                     }}
                                 />
                             </Grid>
@@ -71,6 +72,7 @@ const Main = () => {
                 title={voiture.title}
                 description={voiture.description}
                 open={open}
+                price={voiture.price}
                 handleClose={handleClose}
             />
         </>

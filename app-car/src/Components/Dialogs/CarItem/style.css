@@ -1,0 +1,9 @@
+.price {
+    font-size: 25px;
+    font-weight: bold;
+    color: #e7cfb0;
+}
+.price .text {
+    font-size: 18px;
+    text-decoration: underline;
+}
