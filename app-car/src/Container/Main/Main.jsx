@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Grid, TextField } from "@material-ui/core"
+import { Grid, TextField, Button } from "@material-ui/core"
 import './style.css';
 import CardVoiture from "../../Components/CardVoiture";
 import { voitures } from "../../Lib/voitures"
 import CarItem from "../../Components/Dialogs/CarItem";
+import { Link } from 'react-router-dom';
 
 
 const Main = () => {
@@ -32,7 +33,9 @@ const Main = () => {
             <header>
                 <div className="nav">
                     <div className="title-nav">MES VOITURES</div>
-                    <div className="login-nav">CONNEXION</div>
+                    <div className="login-nav">
+                        <Button component={Link} to="/login">Connexion</Button> <Button component={Link} to="/signup">Inscription</Button>
+                    </div>
                 </div>
                 <div className="parag">
                     <div className="title-parag">BIENVENUE</div>
