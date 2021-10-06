@@ -2,9 +2,9 @@ import React from 'react';
 import './style.css';
 import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, Button } from "@material-ui/core"
 
-const CardVoiture = ({ image, title, description }) => {
+const CardVoiture = ({ image, title, description, onClick }) => {
     return (
-        <Card>
+        <Card onClick={onClick}>
             <CardActionArea>
                 <CardMedia
                 component="img"
@@ -22,14 +22,6 @@ const CardVoiture = ({ image, title, description }) => {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions>
-                <Button size="small" color="primary">
-                    Aperçu
-                </Button>
-                <Button size="small" color="primary">
-                    Learn More
-                </Button>
-            </CardActions>
         </Card>
     );
 }

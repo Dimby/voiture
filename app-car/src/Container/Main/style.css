@@ -1,0 +1,26 @@
+
+header {
+    background-color: #efefef;
+}
+.nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+.nav .title-nav {
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+.parag {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #f3f3f3;
+}
+.parag .title-parag {
+    font-size: 50px;
+    letter-spacing: 15px;
+    font-weight: bold;
+}
+.parag .desc-parag {
+    padding-top: 20px;
+}
