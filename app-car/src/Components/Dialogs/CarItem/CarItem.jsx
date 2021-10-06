@@ -19,8 +19,7 @@ const CarItem = ({ id, image, title, description, open, handleClose }) => {
         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-              {image}
-            {description}
+              
           </DialogContentText>
         </DialogContent>
         <DialogActions>

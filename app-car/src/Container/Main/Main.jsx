@@ -17,10 +17,6 @@ const Main = () => {
 
     const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
     const handleClose = (value) => {
         setOpen(false);
     };
@@ -38,7 +34,7 @@ const Main = () => {
                     <div className="login-nav">CONNEXION</div>
                 </div>
                 <div className="parag">
-                    <div className="title-parag" onClick={() => { handleClickOpen() }}>BIENVENUE</div>
+                    <div className="title-parag">BIENVENUE</div>
                     <div className="desc-parag">" Quand une opportunité se présente, considérez-la comme unique, saisissez-la et agissez. " <br /> <span style={{ color: "#b3b3b3" }}>- Mofaddel Abderrahim </span> </div>
                 </div>
             </header>
