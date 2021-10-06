@@ -28,7 +28,7 @@ const Login = () => {
           <div style={{ textAlign: "center", paddingBottom: "20px", borderBottom: "2px solid white" }}>CONNEXION</div>
           <form className={classes.root} noValidate autoComplete="off" style={{ padding: "20px 0" }}>
             <div>
-              <TextField fullWidth id="standard-basic" label="Nom de l'utilisateur" />
+              <TextField fullWidth id="standard-basic" label="Nom ou pseudo" />
               <TextField fullWidth type="password" id="standard-basic" label="Mot de passe" />
             </div>
             <div style={{ textAlign: "center", paddingTop: "20px" }}>

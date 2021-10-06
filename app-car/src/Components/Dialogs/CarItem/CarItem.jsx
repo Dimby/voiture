@@ -4,7 +4,8 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import List from '@material-ui/core/List'
-import { Grid, TextField, Button } from '@material-ui/core'
+import { Grid, TextField, Button, Divider } from '@material-ui/core'
+import Caddie from '@material-ui/icons/AddShoppingCart'
 import User from '../User'
 import { userList } from '../../../Lib/users'
 import './style.css';
@@ -27,7 +28,9 @@ const CarItem = ({ id, image, title, description, price, open, handleClose }) =>
             aria-describedby="alert-dialog-description"
             maxWidth="md"
         >
-        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+        {title}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <Grid container>
@@ -42,9 +45,13 @@ const CarItem = ({ id, image, title, description, price, open, handleClose }) =>
                 <div className="price">
                   <span className="text">Price :</span> <br /> {price}
                 </div>
+                <div style={{ paddingBottom: "10px", textAlign: "right" }}>
+                  <Button disabled variant="contained" color="primary"><Caddie fontSize="small"  /> &nbsp; Poursuivre la commande</Button>
+                </div>
               </Grid>
             </Grid>
           </DialogContentText>
+          <Divider />
           <DialogContentText>
             <h3>COMMENTAIRES</h3>
             <Grid container>
