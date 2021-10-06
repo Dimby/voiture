@@ -58,11 +58,12 @@ const CarItem = ({ id, image, title, description, price, open, handleClose }) =>
               <Grid item xs="12">
                 <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                   {users?.map((user, index) => {
+                    var username = user?.email?.split('@')[0]+" "+user?.email?.split('@')[1].split('.')[0];
                     return (
                       <User
                         key={index}
-                        avatar={user?.name ?? ""}
-                        username={user?.name?.substring(0, 2)}
+                        avatar={user?.email}
+                        username={username.toUpperCase()}
                         comments={user?.body}
                       />
                     );
