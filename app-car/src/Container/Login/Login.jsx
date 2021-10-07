@@ -26,13 +26,14 @@ const Login = () => {
       <div className="container" style={{ height: "80vh", overflow: "hidden", alignItems: "center" }}>
         <div className="box-login">
           <div style={{ textAlign: "center", paddingBottom: "20px", borderBottom: "2px solid white" }}>CONNEXION</div>
+
           <form className={classes.root} noValidate autoComplete="off" style={{ padding: "20px 0" }}>
             <div>
               <TextField fullWidth id="standard-basic" label="Nom ou pseudo" />
               <TextField fullWidth type="password" id="standard-basic" label="Mot de passe" />
             </div>
             <div style={{ textAlign: "center", paddingTop: "20px" }}>
-              <Button variant="contained" disableElevation>Connecter</Button>
+              <Button type="submit" variant="contained" disableElevation>Connecter</Button>
             </div>
             <div style={{ textAlign: "center", paddingTop: "20px" }}>
               <Link>Mot de passe oublié?</Link>
@@ -41,6 +42,7 @@ const Login = () => {
               Vous n'êtes pas encore inscrit? <Link to="/signup">Inscrivez-vous ici</Link>
             </div>
           </form>
+
         </div>
       </div>
     </>

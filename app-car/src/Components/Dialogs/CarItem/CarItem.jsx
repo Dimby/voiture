@@ -12,13 +12,21 @@ import './style.css';
 
 const CarItem = ({ id, image, title, description, price, open, handleClose }) => {
   const [users, setUsers] = useState();
+  const [textComment, setTextComment] = useState("");
+
   useEffect(() => {
     const getData = async () => {
       const data = await userList();
+      console.log(data)
       setUsers(data);
     };
     getData();
   }, []);
+
+  const onComment = (e) => {
+    setUsers(prevState => [...prevState, {id: 1,  name: "Dimby Rasolonirina", postId: 12, email: "dimby@aveolys.com", body: textComment}]);
+    e.preventDefault()
+  }
   
     return (
         <Dialog
@@ -51,41 +59,48 @@ const CarItem = ({ id, image, title, description, price, open, handleClose }) =>
               </Grid>
             </Grid>
           </DialogContentText>
-          <Divider />
-          <DialogContentText>
-            <h3>COMMENTAIRES</h3>
-            <Grid container>
-              <Grid item xs="12">
-                <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                  {users?.map((user, index) => {
-                    var username = user?.email?.split('@')[0]+" "+user?.email?.split('@')[1].split('.')[0];
-                    return (
-                      <User
-                        key={index}
-                        avatar={user?.email}
-                        username={username.toUpperCase()}
-                        comments={user?.body}
-                      />
-                    );
-                  })}
-                </List>
-                <br />
-                <TextField
-                  id="outlined-multiline-static"
-                  label="Laissez un commentaire"
-                  multiline
-                  fullWidth
-                  rows={3}
-                  variant="outlined"
-                />
-                <p>
-                  <Button variant="contained" color="primary">
-                    Commenter
-                  </Button>
-                </p>
+          {!!localStorage.getItem("pseudo") && 
+          <>
+            <Divider />
+            <DialogContentText>
+              <h3>COMMENTAIRES</h3>
+              <Grid container>
+                <Grid item xs="12">
+                  <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                    {users?.map((user, index) => {
+                      let username = user?.email?.split('@')[0]+" "+user?.email?.split('@')[1].split('.')[0];
+                      return (
+                        <User
+                          key={index}
+                          avatar={user?.email}
+                          username={username.toUpperCase()}
+                          comments={user?.body}
+                        />
+                      );
+                    })}
+                  </List>
+                  <br />
+                  <form onSubmit={onComment}>
+                    <TextField
+                      id="outlined-multiline-static"
+                      label="Laissez un commentaire"
+                      multiline
+                      fullWidth
+                      rows={3}
+                      variant="outlined"
+                      onChange={e => setTextComment(e.target.value)}
+                    />
+                    <p>
+                      <Button type="submit" variant="contained" color="primary">
+                        Commenter
+                      </Button>
+                    </p>
+                  </form>
+                </Grid>
               </Grid>
-            </Grid>
-          </DialogContentText>
+            </DialogContentText>
+            </>
+          }
         </DialogContent>
       </Dialog>
     );
