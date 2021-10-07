@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, Button } from "@material-ui/core"
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@material-ui/core"
 
 const CardVoiture = ({ image, title, description, onClick }) => {
   return (
