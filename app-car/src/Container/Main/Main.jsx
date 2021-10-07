@@ -28,13 +28,26 @@ const Main = () => {
         setOpen(true);
     };
 
+    const onClickLogout = () => {
+        localStorage.setItem("status", "");
+        window.location.reload(false);
+    }
+
     return (
         <>
             <header>
                 <div className="nav">
                     <div className="title-nav">MES VOITURES</div>
                     <div className="login-nav">
-                        <Button component={Link} to="/login">Connexion</Button> <Button component={Link} to="/signup">Inscription</Button>
+                        {!!localStorage.getItem("status") ? 
+                            <>
+                                Lasany <Button onClick={onClickLogout}>Déconnexion</Button>
+                            </>
+                        :
+                            <>
+                                <Button component={Link} to="/login">Connexion</Button> <Button component={Link} to="/signup">Inscription</Button>
+                            </>
+                        }
                     </div>
                 </div>
                 <div className="parag">
@@ -46,15 +59,15 @@ const Main = () => {
                 <div style={{ display: "flex", justifyContent: "space-between", padding: "20px 0 10px 0" }}>
                     <div style={{ textTransform: "uppercase", fontWeight: "bold", position: "relative", top: "20px" }}>Liste des voitures disponibles</div>
                     <div>
-                    <form noValidate autoComplete="off">
-                        <TextField id="standard-basic" label="Chercher une voiture" />
-                    </form>
+                        <form noValidate autoComplete="off">
+                            <TextField id="standard-basic" label="Chercher une voiture" />
+                        </form>
                     </div>
                 </div>
                 <Grid container spacing={3} direction="row" justify="center" alignItems="center" style={{ padding: "20px 0" }}>
-                    {voitures?.map((voiture) => {
+                    {voitures?.map((voiture, index) => {
                         return (
-                            <Grid item xs={3}>
+                            <Grid key={index} item xs={3}>
                                 <CardVoiture 
                                     key={voiture.id}
                                     image={voiture.image}

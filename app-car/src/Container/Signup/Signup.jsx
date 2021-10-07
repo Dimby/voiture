@@ -23,25 +23,21 @@ const Signup = () => {
 
   const onChangePseudo = (e) => {
     setPseudo(e.target.value);
-    // localStorage.setItem(pseudo, pseudo);
   }
   const onChangePassword = (e) => {
     setPassword(e.target.value);
-    // localStorage.setItem(password, password);
   }
   const onChangeConfirmation = (e) => {
     setConfirmation(e.target.value);
-    // localStorage.setItem(password, password);
   }
 
   const onClickSignup = () => {
     if(!!password.trim() === !!confirmation.trim() && !!pseudo.trim()) {
       localStorage.setItem("pseudo", pseudo);
       localStorage.setItem("password", password);
-      console.log(localStorage.getItem(pseudo))
       history.push('/login');
     } else {
-      console.log("Errora")
+      console.log("Mot de passe non identique")
     }
   }
 

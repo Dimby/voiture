@@ -23,8 +23,9 @@ const CarItem = ({ id, image, title, description, price, open, handleClose }) =>
     getData();
   }, []);
 
-  const onComment = (e) => {
-    setUsers(prevState => [...prevState, {id: 1,  name: "Dimby Rasolonirina", postId: 12, email: "dimby@aveolys.com", body: textComment}]);
+  const onSubmitComment = (e) => {
+    setUsers(prevState => [...prevState, {id: 1,  name: "Dimby Rasolonirina", postId: 12, email: localStorage.getItem("pseudo"), body: textComment}]);
+    setTextComment("");
     e.preventDefault()
   }
   
@@ -59,7 +60,7 @@ const CarItem = ({ id, image, title, description, price, open, handleClose }) =>
               </Grid>
             </Grid>
           </DialogContentText>
-          {!!localStorage.getItem("pseudo") && 
+          {!!localStorage.getItem("status") && 
           <>
             <Divider />
             <DialogContentText>
@@ -68,7 +69,7 @@ const CarItem = ({ id, image, title, description, price, open, handleClose }) =>
                 <Grid item xs="12">
                   <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                     {users?.map((user, index) => {
-                      let username = user?.email?.split('@')[0]+" "+user?.email?.split('@')[1].split('.')[0];
+                      let username = user?.email?.split('@')[0];
                       return (
                         <User
                           key={index}
@@ -80,7 +81,7 @@ const CarItem = ({ id, image, title, description, price, open, handleClose }) =>
                     })}
                   </List>
                   <br />
-                  <form onSubmit={onComment}>
+                  <form onSubmit={onSubmitComment}>
                     <TextField
                       id="outlined-multiline-static"
                       label="Laissez un commentaire"
@@ -88,6 +89,7 @@ const CarItem = ({ id, image, title, description, price, open, handleClose }) =>
                       fullWidth
                       rows={3}
                       variant="outlined"
+                      value={textComment}
                       onChange={e => setTextComment(e.target.value)}
                     />
                     <p>
