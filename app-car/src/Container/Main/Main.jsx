@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, TextField, Button } from "@material-ui/core"
+import { Grid, TextField, Button, Avatar } from "@material-ui/core"
 import './style.css';
 import CardVoiture from "../../Components/CardVoiture";
 import { voitures } from "../../Lib/voitures"
@@ -41,7 +41,7 @@ const Main = () => {
                     <div className="login-nav">
                         {!!localStorage.getItem("status") ? 
                             <>
-                                Lasany <Button onClick={onClickLogout}>Déconnexion</Button>
+                                {localStorage.getItem("pseudo")}  | <Button onClick={onClickLogout}>Déconnexion</Button>
                             </>
                         :
                             <>
@@ -55,12 +55,12 @@ const Main = () => {
                     <div className="desc-parag">" Quand une opportunité se présente, considérez-la comme unique, saisissez-la et agissez. " <br /> <span style={{ color: "#b3b3b3" }}>- Mofaddel Abderrahim </span> </div>
                 </div>
             </header>
-            <div style={{ width: "70%", margin: "auto" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", padding: "20px 0 10px 0" }}>
-                    <div style={{ textTransform: "uppercase", fontWeight: "bold", position: "relative", top: "20px" }}>Liste des voitures disponibles</div>
+            <div className="box-voitures">
+                <div className="bv-title">
+                    <div className="bv-text">Liste des voitures disponibles</div>
                     <div>
                         <form noValidate autoComplete="off">
-                            <TextField id="standard-basic" label="Chercher une voiture" />
+                            <TextField disabled id="standard-basic" label="Chercher une voiture" />
                         </form>
                     </div>
                 </div>

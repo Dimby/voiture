@@ -1,0 +1,19 @@
+.box-validation {
+    text-align: center;
+    padding-top: "20px";
+    color: #d90303;
+}
+.box-2 {
+    height: 80vh;
+    overflow: hidden;
+    align-items: center;
+}
+.box-signup {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid white;
+}
+.box-submit {
+    text-align: center;
+    padding-top: 20px;
+}

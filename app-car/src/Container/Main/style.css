@@ -24,3 +24,18 @@ header {
 .parag .desc-parag {
     padding-top: 20px;
 }
+.box-voitures {
+    width: 70%;
+    margin: auto;
+}
+.box-voitures .bv-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 10px 0;
+}
+.box-voitures .bv-title .bv-text {
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    top: 20px;
+}

@@ -19,6 +19,7 @@ const Signup = () => {
   const [pseudo, setPseudo] = useState("");
   const [password, setPassword] = useState("");
   const [confirmation, setConfirmation] = useState("");
+  const [validation, setValidation] = useState("");
   const history = useHistory();
 
   const onChangePseudo = (e) => {
@@ -31,35 +32,43 @@ const Signup = () => {
     setConfirmation(e.target.value);
   }
 
-  const onClickSignup = () => {
-    if(!!password.trim() === !!confirmation.trim() && !!pseudo.trim()) {
-      localStorage.setItem("pseudo", pseudo);
-      localStorage.setItem("password", password);
-      history.push('/login');
-    } else {
-      console.log("Mot de passe non identique")
+  const onClickSignup = (e) => {
+    if(!!pseudo.trim() && !!password.trim() && !!confirmation.trim()) {
+      if(password === confirmation) {
+        localStorage.setItem("pseudo", pseudo);
+        localStorage.setItem("password", password);
+        history.push('/login');
+      } else {
+        setValidation("Le mot de passe n'est pas identique")
+      }
+    }else {
+      setValidation("Les champs ne doivent pas être vide")
     }
+    e.preventDefault();
   }
 
   return (
     <>
       <div className="container" style={{ backgroundColor: "#efefef" }}>
         <div style={{ padding: "20px 0px" }}>
-          <Button component={Link} to="/"> <ArrowBack fontSize="small" /> &nbsp; Retour à la page d'acceuil</Button>
+          <Button onClick={() => history.goBack()}> <ArrowBack fontSize="small" /> &nbsp; Retour</Button>
         </div>
         <div></div>
       </div>
-      <div className="container" style={{ height: "80vh", overflow: "hidden", alignItems: "center" }}>
+      <div className="container box-2">
         <div className="box-login">
-          <div style={{ textAlign: "center", paddingBottom: "20px", borderBottom: "2px solid white" }}>INSCRIPTION</div>
+          <div className="box-signup">INSCRIPTION</div>
           <form onSubmit={onClickSignup} className={classes.root} noValidate autoComplete="off" style={{ padding: "20px 0" }}>
               <div>
                 <TextField onChange={onChangePseudo} fullWidth id="standard-basic" label="Nom ou pseudo" />
                 <TextField onChange={onChangePassword} fullWidth type="password" id="standard-basic" label="Mot de passe" />
                 <TextField onChange={onChangeConfirmation} fullWidth type="password" id="standard-basic" label="Confirmation" />
               </div>
-              <div style={{ textAlign: "center", paddingTop: "20px" }}>
+              <div className="box-submit">
                 <Button type="submit" variant="contained" disableElevation>S'inscrire</Button>
+              </div>
+              <div className="box-validation">
+                {validation}
               </div>
               <div style={{ textAlign: "center", paddingTop: "20px" }}>
                 Vous avez un compte? <Link to="/login">Connectez-vous ici</Link>

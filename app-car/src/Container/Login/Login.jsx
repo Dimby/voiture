@@ -18,6 +18,7 @@ const Login = () => {
 
   const [pseudo, setPseudo] = useState("");
   const [password, setPassword] = useState("");
+  const [validation, setValidation] = useState("");
   const history = useHistory();
 
   const onChangePseudo = (e) => {
@@ -35,7 +36,7 @@ const Login = () => {
       localStorage.setItem("status", true);
       history.push('/');
     } else {
-      console.log("Pseudo ou Mot de passe incorrect")
+      setValidation("Mot de passe ou pseudo incorrect");
     }
     e.preventDefault();
   }
@@ -44,13 +45,13 @@ const Login = () => {
     <>
       <div className="container" style={{ backgroundColor: "#efefef" }}>
         <div style={{ padding: "20px 0px" }}>
-          <Button component={Link} to="/"> <ArrowBack fontSize="small" /> &nbsp; Retour à la page d'acceuil</Button>
+          <Button onClick={() => history.goBack()}> <ArrowBack fontSize="small" /> &nbsp; Retour</Button>
         </div>
         <div></div>
       </div>
       <div className="container" style={{ height: "80vh", overflow: "hidden", alignItems: "center" }}>
         <div className="box-login">
-          <div style={{ textAlign: "center", paddingBottom: "20px", borderBottom: "2px solid white" }}>CONNEXION</div>
+          <div className="title">CONNEXION</div>
 
           <form onSubmit={validForm} className={classes.root} noValidate autoComplete="off" style={{ padding: "20px 0" }}>
             <div>
@@ -60,8 +61,8 @@ const Login = () => {
             <div style={{ textAlign: "center", paddingTop: "20px" }}>
               <Button type="submit" variant="contained" disableElevation>Connecter</Button>
             </div>
-            <div style={{ textAlign: "center", paddingTop: "20px" }}>
-              <Link to="/resetPassword">Mot de passe oublié?</Link>
+            <div className="box-validation">
+              {validation}
             </div>
             <div style={{ textAlign: "center", paddingTop: "20px" }}>
               Vous n'êtes pas encore inscrit? <Link to="/signup">Inscrivez-vous ici</Link>
